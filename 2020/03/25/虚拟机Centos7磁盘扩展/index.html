@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="ch" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HelloWorld - Alworm</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="（一）虚拟机vmware centos7 扩展磁盘空间
+[root@aubin ~]# vgdisplay  — Volume group —  VG Name               cent,"> 
+    <meta name="author" content="LiuMouRen"> 
+    <link rel="alternative" href="atom.xml" title="Alworm" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Alworm</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">HelloWorld</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">HelloWorld</h1>
+        <div class="stuff">
+            <span>三月 25, 2020</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h2 id="（一）虚拟机vmware-centos7-扩展磁盘空间"><a href="#（一）虚拟机vmware-centos7-扩展磁盘空间" class="headerlink" title="（一）虚拟机vmware centos7 扩展磁盘空间"></a>（一）虚拟机vmware centos7 扩展磁盘空间</h2><blockquote>
+<p><code>[root@aubin ~]# vgdisplay</code><br>  — Volume group —<br>  VG Name               <strong><em><code>centos</code></em></strong><br>  System ID<br>  Format                lvm2<br>  Metadata Areas        2<br>  Metadata Sequence No  4<br>  VG Access             read/write<br>  VG Status             resizable<br>  MAX LV                0<br>  Cur LV                2<br>  Open LV               2<br>  Max PV                0<br>  Cur PV                2<br>  Act PV                2<br>  VG Size               23.99 GiB<br>  PE Size               4.00 MiB<br>  Total PE              6142<br>  Alloc PE / Size       4863 / &lt;19.00 GiB<br>  Free  PE / Size       1279 / &lt;5.00 GiB<br>  VG UUID               jasglx-OPLA-G0g2-qpgP-wmS3-nISE-JylLNv</p>
+</blockquote>
+<p>注意这个名字</p>
+<blockquote>
+<p><code>[root@aubin ~]# mkfs.xfs -f /dev/sda3</code><br>meta-data=/dev/sda3              isize=512    agcount=4, agsize=1310720 blks<br>         =                       sectsz=512   attr=2, projid32bit=1<br>         =                       crc=1        finobt=0, sparse=0<br>data     =                       bsize=4096   blocks=5242880, imaxpct=25<br>         =                       sunit=0      swidth=0 blks<br>naming   =version 2              bsize=4096   ascii-ci=0 ftype=1<br>log      =internal log           bsize=4096   blocks=2560, version=2<br>         =                       sectsz=512   sunit=0 blks, lazy-count=1<br>realtime =none                   extsz=4096   blocks=0, rtextents=0</p>
+</blockquote>
+<blockquote>
+<p><code>[root@aubin ~]# pvcreate -f /dev/sda3</code><br>  WARNING: Device for PV dRKew5-i08K-vSGQ-okUo-Qx9M-DY2e-CBGUN6 not found or rejected by a filter.<br>  Couldn’t find device with uuid dRKew5-i08K-vSGQ-okUo-Qx9M-DY2e-CBGUN6.<br>  Wiping xfs signature on /dev/sda3.<br>  Physical volume “/dev/sda3” successfully created.</p>
+</blockquote>
+<blockquote>
+<p><code>[root@aubin ~]# vgextend centos /dev/sda3</code><br>  WARNING: Device for PV dRKew5-i08K-vSGQ-okUo-Qx9M-DY2e-CBGUN6 not found or rejected by a filter.<br>  Couldn’t find device with uuid dRKew5-i08K-vSGQ-okUo-Qx9M-DY2e-CBGUN6.<br>  WARNING: Device for PV dRKew5-i08K-vSGQ-okUo-Qx9M-DY2e-CBGUN6 not found or rejected by a filter.<br>  Volume group “centos” successfully extended</p>
+</blockquote>
+<blockquote>
+<p><code>[root@aubin ~]# lvdisplay</code><br> WARNING: Device for PV dRKew5-i08K-vSGQ-okUo-Qx9M-DY2e-CBGUN6 not found or rejected by a filter.<br> Couldn’t find device with uuid dRKew5-i08K-vSGQ-okUo-Qx9M-DY2e-CBGUN6.<br> — Logical volume —<br><code>LV Path                /dev/centos/swap</code><br> LV Name                swap<br>  VG Name                centos<br>  LV UUID                Xgfxxk-caKK-3PtU-m8Hp-1WVU-N5na-NjytY6<br>  LV Write Access        read/write<br>  LV Creation host, time localhost.localdomain, 2019-03-28 02:19:24 +0800<br>  LV Status              available<br>  #open                 2<br>  LV Size                2.00 GiB<br>  Current LE             512<br>  Segments               1<br>  Allocation             inherit<br>  Read ahead sectors     auto<br>  -currently set to     8192<br>  Block device           253:1</p>
+<p> — Logical volume —<br> LV Path                /dev/centos/root<br> LV<br>Name                root<br>VG Name                centos<br>LV UUID    P4AJcd-iOZf-sywl-Acrq-Ge7a-QrTx-3GYgkz<br>LV Write Access        read/write<br>LV Creation host, time localhost.localdomain, 2019-03-2802:19:25 +0800<br>LV Status              available   # open<br>1   LV Size                &lt;17.00 GiB   Current LE             4351<br>Segments               1<br>Allocation             inherit<br>Read ahead sectors     auto<br>   -currently set to     8192<br>Block device           253:0</p>
+</blockquote>
+<p>注意此处的路径（标红的）</p>
+<blockquote>
+<p><code>[root@aubin ~]# lvextend /dev/centos/root /dev/sd3</code><br>  WARNING: Device for PV dRKew5-i08K-vSGQ-okUo-Qx9M-DY2e-CBGUN6 not found or rejected by a filter.<br>  Couldn’t find device with uuid dRKew5-i08K-vSGQ-okUo-Qx9M-DY2e-CBGUN6.<br>  Cannot change VG centos while PVs are missing.<br>  Consider vgreduce –removemissing.<br>  Cannot process volume group centos</p>
+</blockquote>
+<blockquote>
+<p><code>[root@aubin ~]# vgreduce --removemissing vgname</code><br>  Volume group “vgname” not found<br>  Cannot process volume group vgnam</p>
+</blockquote>
+<blockquote>
+<p><code>[root@aubin ~]# vgreduce --removemissing centos</code><br>  WARNING: Device for PV dRKew5-i08K-vSGQ-okUo-Qx9M-DY2e-CBGUN6 not found or rejected by a filter.<br>  Couldn’t find device with uuid dRKew5-i08K-vSGQ-okUo-Qx9M-DY2e-CBGUN6.<br>  Wrote out consistent volume group centos.</p>
+</blockquote>
+<blockquote>
+<p><code>[root@aubin ~]# vgdisplay</code><br>  — Volume group —<br>  VG Name               centos<br>  System ID<br>  Format                lvm2<br>  Metadata Areas        2<br>  Metadata Sequence No  6<br>  VG Access             read/write<br>  VG Status             resizable<br>  MAX LV                0<br>  Cur LV                2<br>  Open LV               2<br>  Max PV                0<br>  Cur PV                2<br>  Act PV                2<br>  VG Size               38.99 GiB<br>  PE Size               4.00 MiB<br>  Total PE              9982<br>  Alloc PE / Size       4863 / &lt;19.00 GiB<br>  Free  PE / Size       5119 / &lt;20.00 GiB<br>  VG UUID               jasglx-OPLA-G0g2-qpgP-wmS3-nISE-JylLNv</p>
+</blockquote>
+<blockquote>
+<p><code>[root@aubin ~]# df -h</code><br>Filesystem               Size  Used Avail Use% Mounted on<br>/dev/mapper/centos-root   17G   17G  553M  97% /<br>devtmpfs                 894M     0  894M   0% /dev<br>tmpfs                    910M     0  910M   0% /dev/shm<br>tmpfs                    910M   11M  900M   2% /run<br>tmpfs                    910M     0  910M   0% /sys/fs/cgroup<br>/dev/sda1               1014M  236M  779M  24% /boot<br>tmpfs                    182M  4.0K  182M   1% /run/user/42<br>tmpfs                    182M   20K  182M   1% /run/user/0</p>
+</blockquote>
+<blockquote>
+<p><code>[root@aubin ~]# xfs_growfs /dev/centos/root</code><br>meta-data=/dev/mapper/centos-root isize=512    agcount=4,<br>agsize=1113856 blks<br>         =                       sectsz=512   attr=2, projid32bit=1<br>         =                       crc=1        finobt=0 spinodes=0 data     =                       bsize=4096   blocks=4455424, imaxpct=25<br>         =                       sunit=0      swidth=0 blks naming   =version 2              bsize=4096   ascii-ci=0 ftype=1 log      =internal               bsize=4096   blocks=2560, version=2<br>         =                       sectsz=512   sunit=0 blks, lazy-count=1 realtime =none                   extsz=4096   blocks=0,<br>rtextents=0</p>
+</blockquote>
+<blockquote>
+<p><code>[root@aubin ~]# df -h</code><br>Filesystem               Size  Used Avail Use%<br>Mounted on /dev/mapper/centos-root   17G   17G  553M  97% / devtmpfs<br>894M     0  894M   0% /dev tmpfs                    910M     0  910M<br>0% /dev/shm tmpfs                    910M   11M  900M   2% /run tmpfs<br>910M     0  910M   0% /sys/fs/cgroup /dev/sda1               1014M<br>236M  779M  24% /boot tmpfs                    182M  4.0K  182M   1%<br>/run/user/42 tmpfs                    182M   20K  182M   1%<br>/run/user/0</p>
+</blockquote>
+<blockquote>
+<p><code>[root@aubin ~]# lvextend /dev/centos/root /dev/sd3</code><br>  Physical Volume<br>“/dev/sd3” not found in Volume Group “centos”.</p>
+</blockquote>
+<blockquote>
+<p><code>[root@aubin ~]# lvextend /dev/centos/root /dev/sda3</code><br>Size of logical   volume centos/root changed from &lt;17.00 GiB (4351 extents) to 36.99 GiB (9470 extents).   Logical volume centos/root successfully resized.</p>
+</blockquote>
+<blockquote>
+<p><code>[root@aubin ~]# xfs_growfs /dev/centos/root</code><br>meta-data=/dev/mapper/centos-root isize=512    agcount=4,<br>agsize=1113856 blks<br>         =                       sectsz=512   attr=2, projid32bit=1<br>         =                       crc=1        finobt=0 spinodes=0 data     =                       bsize=4096   blocks=4455424, imaxpct=25<br>         =                       sunit=0      swidth=0 blks naming   =version 2              bsize=4096   ascii-ci=0 ftype=1 log      =internal               bsize=4096   blocks=2560, version=2<br>         =                       sectsz=512   sunit=0 blks, lazy-count=1 realtime =none                   extsz=4096   blocks=0,<br>rtextents=0 data blocks changed from 4455424 to 9697280</p>
+</blockquote>
+<blockquote>
+<p><code>[root@aubin ~]# df -h</code><br>Filesystem               Size  Used Avail Use%<br>Mounted on /dev/mapper/centos-root   37G   17G   21G  45% / devtmpfs<br>894M     0  894M   0% /dev tmpfs                    910M     0  910M<br>0% /dev/shm tmpfs                    910M   11M  900M   2% /run tmpfs<br>910M     0  910M   0% /sys/fs/cgroup /dev/sda1               1014M<br>236M  779M  24% /boot tmpfs                    182M  4.0K  182M   1%<br>/run/user/42 tmpfs                    182M   20K  182M   1%<br>/run/user/0</p>
+</blockquote>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
