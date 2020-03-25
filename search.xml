@@ -1,6 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Python爬虫入门案例</title>
+    <url>/2020/03/25/Spider/SpiderTest01/</url>
+    <content><![CDATA[<h2 id="（一）环境准备"><a href="#（一）环境准备" class="headerlink" title="（一）环境准备"></a>（一）环境准备</h2><p><strong>1.python3</strong></p>
+<p><strong>2.requests库</strong>  </p>
+<h2 id="（二）测试案例"><a href="#（二）测试案例" class="headerlink" title="（二）测试案例"></a>（二）测试案例</h2><p>爬取百度上的网页信息</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests <span class="keyword">as</span> req</span><br><span class="line">r = req.get(<span class="string">"http://www.baidu.com"</span>)</span><br><span class="line">r.encoding = <span class="string">"utf-8"</span></span><br><span class="line">r.text</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-运行结果"><a href="#三-运行结果" class="headerlink" title="(三)运行结果"></a>(三)运行结果</h2><h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://img-blog.csdnimg.cn/20200111195049564.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoYXh1MTIz,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></h2>]]></content>
+      <categories>
+        <category>Python</category>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>Pthon</tag>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>My awesome title</title>
+    <url>/2020/03/25/AI/InstallAnaconda3/</url>
+    <content><![CDATA[<h2 id="（一）基础环境"><a href="#（一）基础环境" class="headerlink" title="（一）基础环境"></a>（一）基础环境</h2><p>Anaconda3 和 Centos7<br>没有安装Anaconda3的 转<a href="https://blog.csdn.net/shaxu123/article/details/103967016" target="_blank" rel="noopener">这里</a></p>
+<h2 id="（二）Anaconda3-安装Scrapy"><a href="#（二）Anaconda3-安装Scrapy" class="headerlink" title="（二）Anaconda3 安装Scrapy"></a>（二）Anaconda3 安装Scrapy</h2><p>使用如下命令安装scrapy</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda install scrapy</span><br></pre></td></tr></table></figure>
+<p>安装过程<br>一路yes<br><img src="https://img-blog.csdnimg.cn/20200114081554325.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoYXh1MTIz,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="（三）测试"><a href="#（三）测试" class="headerlink" title="（三）测试"></a>（三）测试</h2><p><img src="https://img-blog.csdnimg.cn/20200114081838823.png" alt="在这里插入图片描述"><br>输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python</span><br><span class="line">import scrapy</span><br></pre></td></tr></table></figure>
+
+<p>一切正常，安装成功</p>
+]]></content>
+      <categories>
+        <category>AI</category>
+        <category>Anaconda3</category>
+      </categories>
+      <tags>
+        <tag>Anaconda3</tag>
+        <tag>Centos</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Centos7 Scrapy安装</title>
+    <url>/2020/03/25/Spider/InstallScrapy-md/</url>
+    <content><![CDATA[<h2 id="（一）基础环境"><a href="#（一）基础环境" class="headerlink" title="（一）基础环境"></a>（一）基础环境</h2><p>Anaconda3 和 Centos7<br>没有安装Anaconda3的 转<a href="https://blog.csdn.net/shaxu123/article/details/103967016" target="_blank" rel="noopener">这里</a></p>
+<h2 id="（二）Anaconda3-安装Scrapy"><a href="#（二）Anaconda3-安装Scrapy" class="headerlink" title="（二）Anaconda3 安装Scrapy"></a>（二）Anaconda3 安装Scrapy</h2><p>使用如下命令安装scrapy</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda install scrapy</span><br></pre></td></tr></table></figure>
+<p>安装过程<br>一路yes<br><img src="https://img-blog.csdnimg.cn/20200114081554325.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoYXh1MTIz,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="（三）测试"><a href="#（三）测试" class="headerlink" title="（三）测试"></a>（三）测试</h2><p><img src="https://img-blog.csdnimg.cn/20200114081838823.png" alt="在这里插入图片描述"><br>输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python</span><br><span class="line">import scrapy</span><br></pre></td></tr></table></figure>
+
+<p>一切正常，安装成功</p>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Centos7</tag>
+        <tag>Scrapy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TabError inconsistent use of tabs and spaces in indentation 错误解决</title>
+    <url>/2020/03/25/Others/TabError/</url>
+    <content><![CDATA[<h2 id="（一）错误原因"><a href="#（一）错误原因" class="headerlink" title="（一）错误原因"></a>（一）错误原因</h2><pre><code>tab和空格混合使用</code></pre><h2 id="（二）更正方法"><a href="#（二）更正方法" class="headerlink" title="（二）更正方法"></a>（二）更正方法</h2><pre><code>把tab全部改写为空格。
+分析:
+    我是在Centos7 中用scrapy框架写代码的时候，发生的错误，scrapy自带的代码是用的空格空开的，我自己加的
+    代码是用的tab，导致出现问题。 
+    python就是用空格区分（不使用{}）所以比较严格吧</code></pre>]]></content>
+      <categories>
+        <category>错误</category>
+      </categories>
+      <tags>
+        <tag>TabError</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java重温</title>
     <url>/2020/03/25/Java/Java%E9%87%8D%E6%B8%A9/</url>
     <content><![CDATA[<h2 id="（一）泛型-上"><a href="#（一）泛型-上" class="headerlink" title="（一）泛型(上)"></a>（一）泛型(上)</h2><h5 id="1）No泛型"><a href="#1）No泛型" class="headerlink" title="1）No泛型"></a>1）No泛型</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NeedGeneric1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        System.out.println(a + <span class="string">"+"</span> + b + <span class="string">"="</span> + (a + b));</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">float</span> <span class="title">add</span><span class="params">(<span class="keyword">float</span> a, <span class="keyword">float</span> b)</span> </span>&#123;</span><br><span class="line">        System.out.println(a + <span class="string">"+"</span> + b + <span class="string">"="</span> + (a + b));</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">add</span><span class="params">(<span class="keyword">double</span> a, <span class="keyword">double</span> b)</span> </span>&#123;</span><br><span class="line">        System.out.println(a + <span class="string">"+"</span> + b + <span class="string">"="</span> + (a + b));</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> &lt;T extends Number&gt; <span class="function"><span class="keyword">double</span> <span class="title">add</span><span class="params">(T a, T b)</span> </span>&#123;</span><br><span class="line">        System.out.println(a + <span class="string">"+"</span> + b + <span class="string">"="</span> + (a.doubleValue() + b.doubleValue()));</span><br><span class="line">        <span class="keyword">return</span> a.doubleValue() + b.doubleValue();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        NeedGeneric1.add(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">        NeedGeneric1.add(<span class="number">1f</span>, <span class="number">2f</span>);</span><br><span class="line">        NeedGeneric1.add(<span class="number">1</span>d, <span class="number">2</span>d);</span><br><span class="line">        NeedGeneric1.add(Integer.valueOf(<span class="number">1</span>), Integer.valueOf(<span class="number">2</span>));</span><br><span class="line">        NeedGeneric1.add(Float.valueOf(<span class="number">1</span>), Float.valueOf(<span class="number">2</span>));</span><br><span class="line">        NeedGeneric1.add(Double.valueOf(<span class="number">1</span>), Double.valueOf(<span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -80,6 +152,44 @@
         <tag>Java</tag>
         <tag>泛型</tag>
         <tag>Java常用接口</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安装双系统之后Win10时间错误</title>
+    <url>/2020/03/25/Linux/DoubleSystemTimeWong/</url>
+    <content><![CDATA[<h3 id="（一）第一种方法"><a href="#（一）第一种方法" class="headerlink" title="（一）第一种方法"></a>（一）第一种方法</h3><p>注：</p>
+<p>​        经测试，第一种方法，本人的电脑不适用，但是有的电脑适用。</p>
+<h4 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1:"></a>Step 1:</h4><p>注意一定要用管理员身份运行</p>
+<p>​            <img src="https://img-blog.csdnimg.cn/20200321174213609.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoYXh1MTIz,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-xFJby8gg-1584782970605)(C:\Users\lenovo\Desktop\1584781935581.png)\]"></p>
+<h4 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2:"></a>Step 2:</h4><p><img src="https://img-blog.csdnimg.cn/20200321174308790.png" alt="在这里插入图片描述"></p>
+<p>文本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1</span><br></pre></td></tr></table></figure>
+
+<p>之后，重启计算机就，笔者的电脑这个方法是不适用的。</p>
+<h3 id="二-第二种方法"><a href="#二-第二种方法" class="headerlink" title="(二)第二种方法"></a>(二)第二种方法</h3><h4 id="Step-1-1"><a href="#Step-1-1" class="headerlink" title="Step 1:"></a>Step 1:</h4><p>​        先进入Ubuntu系统</p>
+<p>​       在命令行输入</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install ntpdate</span><br><span class="line">sudo ntpdate time.windows.com</span><br><span class="line">sudo hwclock --localtime --systohc</span><br></pre></td></tr></table></figure>
+
+<p>之后重启电脑，进入Windows，查看是否有效。</p>
+<h4 id="Step-2-1"><a href="#Step-2-1" class="headerlink" title="Step 2:"></a>Step 2:</h4><p>​        如果没有效果，并且你已经尝试了第一种，方法，那么请把刚刚添加的注册表删除。方法如下：</p>
+<ol>
+<li>win + R  输入regedit</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20200321174449998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoYXh1MTIz,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ol start="2">
+<li>进入此目录下</li>
+</ol>
+<p><code>\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation</code></p>
+<p>​    把<code>RealTimeIsUniversal</code> 删除(在方法一中就是通过命令行添加了叫这个名字的东西)</p>
+<ol start="3">
+<li>重启计算机。</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Centos7</tag>
+        <tag>双系统</tag>
+        <tag>时间错误</tag>
       </tags>
   </entry>
   <entry>
