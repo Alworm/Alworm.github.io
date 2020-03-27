@@ -1,6 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hexo+个人服务器+Github搭建个人博客</title>
+    <url>/2020/03/27/Linux/Hexo%20+%20%E4%B8%AA%E4%BA%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%20+%20Github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h1 id="Hexo-个人服务器-Github搭建个人博客"><a href="#Hexo-个人服务器-Github搭建个人博客" class="headerlink" title="Hexo + 个人服务器 + Github搭建个人博客"></a>Hexo + 个人服务器 + Github搭建个人博客</h1><h2 id="一-环境准备"><a href="#一-环境准备" class="headerlink" title="(一)环境准备"></a>(一)环境准备</h2><ol>
+<li>个人PC</li>
+<li>个人服务器(没有也可以，直接使用Github托管)</li>
+</ol>
+<p>说明:</p>
+<p>​        本人电脑是双系统，此教程是在Linux下操作的，但是Win也是差不多的。</p>
+<h2 id="二-PC搭建Hexo"><a href="#二-PC搭建Hexo" class="headerlink" title="(二) PC搭建Hexo"></a>(二) PC搭建Hexo</h2><h3 id="1-安装Git"><a href="#1-安装Git" class="headerlink" title="1) 安装Git"></a>1) 安装Git</h3><p>Linux:</p>
+<p>命令行输入以下命令安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
+
+<p>安装完成之后可以查看版本，确认安装成功</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-安装nodejs"><a href="#2-安装nodejs" class="headerlink" title="2) 安装nodejs"></a>2) 安装nodejs</h3><p> Hexo是基于nodeJS编写的，所以需要安装一下nodeJs和里面的npm工具。</p>
+<p>Linux :</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install nodejs</span><br><span class="line">sudo apt-get install npm</span><br></pre></td></tr></table></figure>
+
+<p>安装完成之后可以查看版本:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-安装hexo"><a href="#3-安装hexo" class="headerlink" title="3) 安装hexo"></a>3) 安装hexo</h3><p>安装命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+
+
+<p>查看是否安装成功</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+
+
+
+<p>初始化</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo init Alworm</span><br></pre></td></tr></table></figure>
+
+<p><code>Alworm</code>写的是你的博客的名字，名字自己随便取</p>
+<p>进入此目录</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd Alworm</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+
+
+<p>生成博客</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器输入<code>localhost:4000</code>就可以看到你自己博客的样子了。</p>
+<p>默认的博客的样子有点丑，可以自己更改，我会在我的另一篇文章中提到。</p>
+<h2 id="三-Github托管"><a href="#三-Github托管" class="headerlink" title="(三)Github托管"></a>(三)Github托管</h2><p>通过之前的操作，我们已经生成了自己的博客，但是此时我们的博客还只是在本地电脑上，现在只有你自己才能看看到，显然我们的目标远远不只于此。</p>
+<h3 id="1-创建属于自己的GitHub账号"><a href="#1-创建属于自己的GitHub账号" class="headerlink" title="1) 创建属于自己的GitHub账号"></a>1) 创建属于自己的GitHub账号</h3><p>![Screenshot from 2020-03-27 08-58-09](/home/alworm/Pictures/Screenshot from 2020-03-27 08-58-09.png)</p>
+<p>创建一个和你用户名相同的仓库,后面加上<code>github.io</code>只有这样，将来要部署到GitHub page的时候，才会被识别，例如:<code>alworm.github.io</code>。</p>
+<h3 id="2-向Github上传"><a href="#2-向Github上传" class="headerlink" title="2) 向Github上传"></a>2) 向Github上传</h3><p>可以使用ssh的方式，大概过程是利用公钥和秘钥, 这样每次都不用输入密码了</p>
+<p>也可以用https的方式，不过这样每次上传的时候都要输入密码</p>
+<p>操作:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global user.name "你的Github用户名"</span><br><span class="line">git config --global user.email "你的Github使用的邮箱"</span><br></pre></td></tr></table></figure>
+
+<p>检查：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config user.name</span><br><span class="line">git config user.email</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C "你的邮箱"</span><br></pre></td></tr></table></figure>
+
+<p>之后会在你的电脑上生成一个隐藏目录.ssh, 其中保存的就是你的公钥和秘钥。利用<code>ls -a</code>可以查看隐藏文件</p>
+<p>而后在GitHub的setting中，找到SSH keys的设置选项，点击<code>New SSH key</code><br>把你的<code>id_rsa.pub</code>里面的信息复制进去。</p>
+<p>![Screenshot from 2020-03-27 09-14-452](/home/alworm/Pictures/Screenshot from 2020-03-27 09-14-452.png)</p>
+<p>![Screenshot from 2020-03-27 09-14-45](/home/alworm/Pictures/Screenshot from 2020-03-27 09-14-45.png)</p>
+<p>在gitbash中，查看是否成功</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-将你的博客部署到Github"><a href="#3-将你的博客部署到Github" class="headerlink" title="3) 将你的博客部署到Github"></a>3) 将你的博客部署到Github</h3><p>找到你之前在PC上建立的博客目录</p>
+<p>进入里面有一个<code>_config.yml</code>文件，打开他</p>
+<p>在文件的最后添加如下内容</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/YourGithubName/YourGithubName.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>上面的repo 写的地址是 https的上传方式，需要输入用户名和密码（Github的）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git@github.com:YourGithubName/YourGithubName.github.io.git,master</span><br></pre></td></tr></table></figure>
+
+<p>有了<code>,master</code>就不用写下面那句 <code>branch: master</code>了 </p>
+<p>保存退出</p>
+<p>执行下面的命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p><code>hexo clean</code>                       清除了你之前生成的东西，也可以不加。<br><code>hexo generate</code>                 顾名思义，生成静态文章，可以用 <code>hexo g</code>缩写<br><code>hexo deploy</code>                     部署文章，可以用<code>hexo d</code>缩写</p>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Hexo</tag>
+        <tag>服务器</tag>
+        <tag>个人博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python爬虫入门案例</title>
     <url>/2020/03/25/Spider/SpiderTest01/</url>
     <content><![CDATA[<h2 id="（一）环境准备"><a href="#（一）环境准备" class="headerlink" title="（一）环境准备"></a>（一）环境准备</h2><p><strong>1.python3</strong></p>
