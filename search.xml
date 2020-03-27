@@ -87,7 +87,55 @@
  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p><code>hexo clean</code>                       清除了你之前生成的东西，也可以不加。<br><code>hexo generate</code>                 顾名思义，生成静态文章，可以用 <code>hexo g</code>缩写<br><code>hexo deploy</code>                     部署文章，可以用<code>hexo d</code>缩写</p>
-]]></content>
+<p>此时在<code>http://yourname.github.io</code>就可以看到你自己的博客了</p>
+<h2 id="四-个人服务器的配置以及搭建"><a href="#四-个人服务器的配置以及搭建" class="headerlink" title="(四)个人服务器的配置以及搭建"></a>(四)个人服务器的配置以及搭建</h2><p>随着博客内容越来越多，你会发现，托管到github上速度真的是有点慢（访问速度），此时你可能就需要看到这一部分了。</p>
+<p>由于coding 个人版本已经下架Coding Pages 功能，所以要想提高国内访问你博客的速度，最好的方法就是搭建自己的个人服务器了。</p>
+<h3 id="1-基础准备"><a href="#1-基础准备" class="headerlink" title="1) 基础准备"></a>1) 基础准备</h3><p>云服务器 （我个人购买的是腾讯云）</p>
+<h3 id="2-环境准备"><a href="#2-环境准备" class="headerlink" title="2) 环境准备"></a>2) 环境准备</h3><p>安装nginx</p>
+<p>​    推荐使用 <a href="https://lnmp.org/install.html" target="_blank" rel="noopener">LNMP一键安装包</a></p>
+<p>安装node.js</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -</span><br><span class="line">apt-get install -y nodejs</span><br></pre></td></tr></table></figure>
+
+
+
+<p>安装Git</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt-get install git</span><br></pre></td></tr></table></figure>
+
+
+
+<p>为了确保安全性, 使用一个专门的git用户来进行git操作(不这样也是可以的)</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo adduser git</span><br></pre></td></tr></table></figure>
+
+
+
+<p>添加证书登录</p>
+<p>在上面的操作中，我们已经完成了,公钥和秘钥，把自己的公钥添加到，服务器的 <code>/home/git/.ssh/authorized_keys</code> 文件中</p>
+<p>创建Git仓库</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo mkdir /var/repo</span><br><span class="line">cd /var/repo</span><br><span class="line">sudo git init --bare blog.git</span><br></pre></td></tr></table></figure>
+
+
+
+<p>配置git hooks</p>
+<p>在 blog.git/hooks 目录下新建一个 post-receive 文件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /var/repo/blog.git/hooks</span><br></pre></td></tr></table></figure>
+
+<p>创建一个文件下如以下内容:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git --work-tree=/var/www/html --git-dir=/var/repo/blog.git checkout -f</span><br></pre></td></tr></table></figure>
+
+<p>注意此处的目录是采用刚刚统一安装软件会生成的目录，和一个自定义的目录，所以注意你自己的目录</p>
+<p>给这个文件添加可执行权限</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod +x 你创建的文件的名字</span><br></pre></td></tr></table></figure>
+
+
+
+<p>改变 blog.git 目录的拥有者为 git 用户</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo chown -R git:git blog.git</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-配置本地Hexo"><a href="#3-配置本地Hexo" class="headerlink" title="3) 配置本地Hexo"></a>3) 配置本地Hexo</h3><p>修改你的PC下<code>_config.yml</code> 文件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repo: git@129.204.29.53:/var/repo/blog.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
+
+<p>我这里没有再使用github ，你也可以使用两个仓库。</p>
+<h3 id="4）部署到个人服务器"><a href="#4）部署到个人服务器" class="headerlink" title="4）部署到个人服务器"></a>4）部署到个人服务器</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>Linux</tag>
         <tag>Hexo</tag>
