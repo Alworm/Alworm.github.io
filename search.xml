@@ -298,6 +298,44 @@
       </tags>
   </entry>
   <entry>
+    <title>安装双系统之后Win10时间错误</title>
+    <url>/2020/03/25/Linux/DoubleSystemTimeWong/</url>
+    <content><![CDATA[<h3 id="（一）第一种方法"><a href="#（一）第一种方法" class="headerlink" title="（一）第一种方法"></a>（一）第一种方法</h3><p>注：</p>
+<p>​        经测试，第一种方法，本人的电脑不适用，但是有的电脑适用。</p>
+<h4 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1:"></a>Step 1:</h4><p>注意一定要用管理员身份运行</p>
+<p>​            <img src="https://img-blog.csdnimg.cn/20200321174213609.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoYXh1MTIz,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-xFJby8gg-1584782970605)(C:\Users\lenovo\Desktop\1584781935581.png)\]"></p>
+<h4 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2:"></a>Step 2:</h4><p><img src="https://img-blog.csdnimg.cn/20200321174308790.png" alt="在这里插入图片描述"></p>
+<p>文本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1</span><br></pre></td></tr></table></figure>
+
+<p>之后，重启计算机就，笔者的电脑这个方法是不适用的。</p>
+<h3 id="二-第二种方法"><a href="#二-第二种方法" class="headerlink" title="(二)第二种方法"></a>(二)第二种方法</h3><h4 id="Step-1-1"><a href="#Step-1-1" class="headerlink" title="Step 1:"></a>Step 1:</h4><p>​        先进入Ubuntu系统</p>
+<p>​       在命令行输入</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install ntpdate</span><br><span class="line">sudo ntpdate time.windows.com</span><br><span class="line">sudo hwclock --localtime --systohc</span><br></pre></td></tr></table></figure>
+
+<p>之后重启电脑，进入Windows，查看是否有效。</p>
+<h4 id="Step-2-1"><a href="#Step-2-1" class="headerlink" title="Step 2:"></a>Step 2:</h4><p>​        如果没有效果，并且你已经尝试了第一种，方法，那么请把刚刚添加的注册表删除。方法如下：</p>
+<ol>
+<li>win + R  输入regedit</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20200321174449998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoYXh1MTIz,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ol start="2">
+<li>进入此目录下</li>
+</ol>
+<p><code>\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation</code></p>
+<p>​    把<code>RealTimeIsUniversal</code> 删除(在方法一中就是通过命令行添加了叫这个名字的东西)</p>
+<ol start="3">
+<li>重启计算机。</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Centos7</tag>
+        <tag>双系统</tag>
+        <tag>时间错误</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>虚拟机Centos7磁盘扩充</title>
     <url>/2020/03/25/Linux/Centos7%E7%A3%81%E7%9B%98%E6%89%A9%E5%85%85/</url>
     <content><![CDATA[<h2 id="（一）虚拟机vmware-centos7-扩展磁盘空间"><a href="#（一）虚拟机vmware-centos7-扩展磁盘空间" class="headerlink" title="（一）虚拟机vmware centos7 扩展磁盘空间"></a>（一）虚拟机vmware centos7 扩展磁盘空间</h2><blockquote>
@@ -357,44 +395,6 @@
         <tag>Centos7</tag>
         <tag>虚拟机</tag>
         <tag>磁盘扩充</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安装双系统之后Win10时间错误</title>
-    <url>/2020/03/25/Linux/DoubleSystemTimeWong/</url>
-    <content><![CDATA[<h3 id="（一）第一种方法"><a href="#（一）第一种方法" class="headerlink" title="（一）第一种方法"></a>（一）第一种方法</h3><p>注：</p>
-<p>​        经测试，第一种方法，本人的电脑不适用，但是有的电脑适用。</p>
-<h4 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1:"></a>Step 1:</h4><p>注意一定要用管理员身份运行</p>
-<p>​            <img src="https://img-blog.csdnimg.cn/20200321174213609.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoYXh1MTIz,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-xFJby8gg-1584782970605)(C:\Users\lenovo\Desktop\1584781935581.png)\]"></p>
-<h4 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2:"></a>Step 2:</h4><p><img src="https://img-blog.csdnimg.cn/20200321174308790.png" alt="在这里插入图片描述"></p>
-<p>文本</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1</span><br></pre></td></tr></table></figure>
-
-<p>之后，重启计算机就，笔者的电脑这个方法是不适用的。</p>
-<h3 id="二-第二种方法"><a href="#二-第二种方法" class="headerlink" title="(二)第二种方法"></a>(二)第二种方法</h3><h4 id="Step-1-1"><a href="#Step-1-1" class="headerlink" title="Step 1:"></a>Step 1:</h4><p>​        先进入Ubuntu系统</p>
-<p>​       在命令行输入</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install ntpdate</span><br><span class="line">sudo ntpdate time.windows.com</span><br><span class="line">sudo hwclock --localtime --systohc</span><br></pre></td></tr></table></figure>
-
-<p>之后重启电脑，进入Windows，查看是否有效。</p>
-<h4 id="Step-2-1"><a href="#Step-2-1" class="headerlink" title="Step 2:"></a>Step 2:</h4><p>​        如果没有效果，并且你已经尝试了第一种，方法，那么请把刚刚添加的注册表删除。方法如下：</p>
-<ol>
-<li>win + R  输入regedit</li>
-</ol>
-<p><img src="https://img-blog.csdnimg.cn/20200321174449998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoYXh1MTIz,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ol start="2">
-<li>进入此目录下</li>
-</ol>
-<p><code>\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation</code></p>
-<p>​    把<code>RealTimeIsUniversal</code> 删除(在方法一中就是通过命令行添加了叫这个名字的东西)</p>
-<ol start="3">
-<li>重启计算机。</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Centos7</tag>
-        <tag>双系统</tag>
-        <tag>时间错误</tag>
       </tags>
   </entry>
 </search>
